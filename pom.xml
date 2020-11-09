@@ -22,6 +22,14 @@
     <url>https://github.com/M-Whitaker/alexa-message-machine.git</url>
   </scm>
 
+  <properties>
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <junit-platform.version>RELEASE</junit-platform.version>
+  </properties>
+
+
   <dependencies>
     <dependency>
       <groupId>com.amazon.alexa</groupId>
@@ -30,8 +38,14 @@
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit-platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit-platform.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -53,6 +67,16 @@
             <target>1.8</target>
             <forceJavacCompilerUse>true</forceJavacCompilerUse>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>2.22.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
